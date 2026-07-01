@@ -1,6 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 180" role="img" aria-label="Isotipo HÁBITAT PRIME">
-  <defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f1d188"/><stop offset="1" stop-color="#a98231"/></linearGradient></defs>
-  <rect width="180" height="180" rx="36" fill="#0b1f33"/>
-  <path d="M90 26 29 75v73h36v-45h50v45h36V75L90 26Z" fill="url(#g)"/>
-  <path d="M63 136h14v-32h26v32h14V82L90 60 63 82v54Z" fill="#0b1f33"/>
-</svg>
