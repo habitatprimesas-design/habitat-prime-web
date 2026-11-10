@@ -103,20 +103,20 @@
           <a class="btn btn-ghost" href="#contacto">Solicitar asesoría</a>
         </div>
 
-        <form class="search-card" aria-label="Buscador inicial de inmuebles" onsubmit="event.preventDefault(); window.location.hash='inmuebles';">
+        <form class="search-card" aria-label="Buscador inicial de inmuebles" id="quickSearchForm">
           <label>
             <span>Estoy buscando</span>
-            <select aria-label="Tipo de búsqueda">
-              <option>Administrar mi inmueble</option>
-              <option>Arrendar</option>
-              <option>Comprar</option>
-              <option>Vender</option>
+            <select name="intencion" aria-label="Tipo de búsqueda">
+              <option value="Administración">Administrar mi inmueble</option>
+              <option value="Arriendo">Arrendar</option>
+              <option value="Venta">Comprar</option>
+              <option value="Vender">Vender</option>
             </select>
           </label>
 
           <label>
             <span>Ciudad</span>
-            <select aria-label="Ciudad">
+            <select name="ciudad" aria-label="Ciudad">
               <option>Bogotá D.C.</option>
               <option>Cundinamarca</option>
               <option>Otra ciudad</option>
@@ -125,7 +125,7 @@
 
           <label>
             <span>Tipo de inmueble</span>
-            <select aria-label="Tipo de inmueble">
+            <select name="tipo" aria-label="Tipo de inmueble">
               <option>Apartamento</option>
               <option>Casa</option>
               <option>Local</option>
@@ -134,7 +134,7 @@
             </select>
           </label>
 
-          <button type="submit">Buscar</button>
+          <button type="submit">Continuar</button>
         </form>
       </div>
     </section>
@@ -142,8 +142,8 @@
     <section class="trust-band" aria-label="Indicadores de confianza">
       <div class="wrap trust-grid">
         <article><strong>360°</strong><span>Gestión integral inmobiliaria</span></article>
-        <article><strong>100%</strong><span>Respaldo jurídico y comercial</span></article>
-        <article><strong>24/7</strong><span>Canales digitales de contacto</span></article>
+        <article><strong>Jurídico</strong><span>Acompañamiento contractual y comercial</span></article>
+        <article><strong>Digital</strong><span>Canales para dejar su solicitud</span></article>
         <article><strong>Prime</strong><span>Servicio elegante, claro y confiable</span></article>
       </div>
     </section>
@@ -237,6 +237,7 @@
             <select name="ciudad">
               <option value="">Todas</option>
               <option value="Bogotá D.C.">Bogotá D.C.</option>
+              <option value="Cundinamarca">Cundinamarca</option>
               <option value="Cajicá">Cajicá</option>
               <option value="Chía">Chía</option>
               <option value="Madrid">Madrid</option>
@@ -412,7 +413,7 @@
 
           <label class="check-line">
             <input type="checkbox" required />
-            Autorizo el tratamiento de mis datos personales conforme a la política de privacidad de HÁBITAT PRIME S.A.S.
+            Autorizo el tratamiento de mis datos personales conforme a la <a href="politica-privacidad.html" target="_blank" rel="noopener">política de privacidad</a> de HÁBITAT PRIME S.A.S.
           </label>
 
           <div class="form-actions">
@@ -448,11 +449,7 @@
       <div class="footer-brand">
         <img src="assets/img/logo-blanco.png" alt="HÁBITAT PRIME" />
         <p>Protegemos el patrimonio de nuestros clientes mediante gestión inmobiliaria profesional, transparente y con respaldo jurídico.</p>
-        <div class="footer-social">
-          <a href="#" aria-label="Instagram HÁBITAT PRIME">Instagram</a>
-          <a href="#" aria-label="Facebook HÁBITAT PRIME">Facebook</a>
-          <a href="#" aria-label="LinkedIn HÁBITAT PRIME">LinkedIn</a>
-        </div>
+
       </div>
 
       <div>

@@ -57,7 +57,7 @@ function applyFilters(){
   const habitaciones=Number(data.get('habitaciones')||0);
   const result=properties.filter(p=>
     (!operacion || p.operacion===operacion) &&
-    (!ciudad || p.ciudad===ciudad) &&
+    (!ciudad || (ciudad==='Cundinamarca' ? ['Cajicá','Chía','Madrid'].includes(p.ciudad) : p.ciudad===ciudad)) &&
     (!tipo || p.tipo===tipo) &&
     (!precio || p.precio===0 || p.precio<=precio) &&
     (!habitaciones || p.habitaciones>=habitaciones)
@@ -74,3 +74,31 @@ function openModal(p){
 document.querySelectorAll('[data-close-modal]').forEach(b=>b.addEventListener('click',()=>modal.close()));
 if(modal){modal.addEventListener('click',e=>{if(e.target===modal) modal.close();});}
 render(properties);
+
+// Preserve the visitor's intent across the quick enquiry and property filters.
+const quickSearch = document.getElementById('quickSearchForm');
+if (quickSearch) quickSearch.addEventListener('submit', event => {
+  event.preventDefault();
+  const choice = new FormData(quickSearch);
+  const intent = choice.get('intencion');
+  const city = choice.get('ciudad');
+  const type = choice.get('tipo');
+  if (intent === 'Administración' || intent === 'Vender') {
+    const lead = document.getElementById('leadForm');
+    lead.elements.servicio.value = intent === 'Vender' ? 'Venta de inmueble' : 'Administración de inmueble';
+    lead.elements.ciudad.value = city === 'Otra ciudad' ? '' : city;
+    if (!lead.elements.mensaje.value) lead.elements.mensaje.value = `Tengo un ${type.toLowerCase()} y quiero información sobre ${intent === 'Vender' ? 'su venta' : 'su administración'}.`;
+    document.getElementById('contacto').scrollIntoView({behavior:'smooth'});
+    lead.elements.nombre.focus({preventScroll:true});
+    return;
+  }
+  filter.reset();
+  filter.elements.operacion.value = intent;
+  filter.elements.ciudad.value = city === 'Otra ciudad' ? '' : city;
+  // A missing property type must show no results, never silently drop the choice.
+  const selectedType = Array.from(filter.elements.tipo.options).find(option => option.value === type);
+  if (!selectedType) filter.elements.tipo.add(new Option(type, type));
+  filter.elements.tipo.value = type;
+  applyFilters();
+  document.getElementById('inmuebles').scrollIntoView({behavior:'smooth'});
+});
